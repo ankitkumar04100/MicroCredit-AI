@@ -3,6 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Bell, Menu, User, Zap } from 'lucide-react';
 
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -23,18 +30,30 @@ const Header = () => {
 
           {/* Navigation - Desktop */}
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#dashboard" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <button 
+              onClick={() => scrollToSection('dashboard')} 
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
               Dashboard
-            </a>
-            <a href="#loans" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('loans')} 
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
               Loans
-            </a>
-            <a href="#learn" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('learn')} 
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
               Learn
-            </a>
-            <a href="#insights" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('insights')} 
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
               Insights
-            </a>
+            </button>
           </nav>
 
           {/* User Actions */}

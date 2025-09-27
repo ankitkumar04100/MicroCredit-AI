@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import LoanApplicationModal from '@/components/LoanApplicationModal';
+import PaymentModal from '@/components/PaymentModal';
 import { Clock, DollarSign, TrendingUp } from 'lucide-react';
 
 interface LoanCardProps {
@@ -100,13 +102,42 @@ const LoanCard: React.FC<LoanCardProps> = ({
             </span>
           </div>
           
-          <Button 
-            variant={getButtonVariant()} 
-            className="w-full transition-smooth"
-            disabled={status === 'applied'}
-          >
-            {getButtonText()}
-          </Button>
+          {status === 'available' ? (
+            <LoanApplicationModal
+              loanAmount={amount}
+              interestRate={interestRate}
+              term={term}
+              monthlyPayment={monthlyPayment}
+            >
+              <Button 
+                variant={getButtonVariant()} 
+                className="w-full transition-smooth"
+              >
+                {getButtonText()}
+              </Button>
+            </LoanApplicationModal>
+          ) : status === 'active' ? (
+            <PaymentModal
+              type="loan-payment"
+              amount={monthlyPayment}
+              dueDate="Feb 15, 2024"
+            >
+              <Button 
+                variant={getButtonVariant()} 
+                className="w-full transition-smooth"
+              >
+                Make Payment
+              </Button>
+            </PaymentModal>
+          ) : (
+            <Button 
+              variant={getButtonVariant()} 
+              className="w-full transition-smooth"
+              disabled={status === 'applied'}
+            >
+              {getButtonText()}
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>

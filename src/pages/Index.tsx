@@ -8,6 +8,9 @@ import CreditScoreRing from '@/components/CreditScoreRing';
 import LoanCard from '@/components/LoanCard';
 import FinancialLiteracyCard from '@/components/FinancialLiteracyCard';
 import StatsCard from '@/components/StatsCard';
+import TransactionHistory from '@/components/TransactionHistory';
+import GoalTracker from '@/components/GoalTracker';
+import PaymentModal from '@/components/PaymentModal';
 import heroImage from '@/assets/fintech-hero.jpg';
 import { 
   Smartphone, 
@@ -220,7 +223,7 @@ const Index = () => {
       </section>
 
       {/* Main Dashboard */}
-      <section className="py-16 bg-background">
+      <section id="dashboard" className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Your Financial Dashboard</h2>
@@ -231,10 +234,10 @@ const Index = () => {
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-              <TabsTrigger value="loans">Loans</TabsTrigger>
-              <TabsTrigger value="literacy">Learn</TabsTrigger>
-              <TabsTrigger value="insights">Insights</TabsTrigger>
+              <TabsTrigger value="dashboard" id="dashboard-tab">Dashboard</TabsTrigger>
+              <TabsTrigger value="loans" id="loans-tab">Loans</TabsTrigger>
+              <TabsTrigger value="literacy" id="learn-tab">Learn</TabsTrigger>
+              <TabsTrigger value="insights" id="insights-tab">Insights</TabsTrigger>
             </TabsList>
 
             {/* Dashboard Tab */}
@@ -251,9 +254,11 @@ const Index = () => {
                       <p className="text-sm text-muted-foreground">
                         Score improved by <span className="text-secondary font-semibold">+23 points</span> this month
                       </p>
-                      <Button variant="outline" className="w-full">
-                        View Score Details
-                      </Button>
+                      <PaymentModal type="wallet-topup">
+                        <Button variant="outline" className="w-full">
+                          Top Up Wallet
+                        </Button>
+                      </PaymentModal>
                     </div>
                   </CardContent>
                 </Card>
@@ -295,10 +300,16 @@ const Index = () => {
                   />
                 </div>
               </div>
+              
+              {/* Additional Dashboard Cards */}
+              <div className="grid lg:grid-cols-2 gap-8 mt-8">
+                <TransactionHistory />
+                <GoalTracker />
+              </div>
             </TabsContent>
 
             {/* Loans Tab */}
-            <TabsContent value="loans" className="space-y-6">
+            <TabsContent value="loans" className="space-y-6" id="loans">
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Available Micro-Loans</h3>
                 <p className="text-muted-foreground">
@@ -314,7 +325,7 @@ const Index = () => {
             </TabsContent>
 
             {/* Financial Literacy Tab */}
-            <TabsContent value="literacy" className="space-y-6">
+            <TabsContent value="literacy" className="space-y-6" id="learn">
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Build Financial Knowledge</h3>
                 <p className="text-muted-foreground">
@@ -330,7 +341,7 @@ const Index = () => {
             </TabsContent>
 
             {/* Insights Tab */}
-            <TabsContent value="insights" className="space-y-6">
+            <TabsContent value="insights" className="space-y-6" id="insights">
               <div className="grid lg:grid-cols-2 gap-8">
                 <Card className="fintech-card">
                   <CardHeader>
