@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Header from '@/components/Header';
 import CreditScoreRing from '@/components/CreditScoreRing';
 import LoanCard from '@/components/LoanCard';
 import FinancialLiteracyCard from '@/components/FinancialLiteracyCard';
@@ -99,6 +100,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <Header />
       {/* Hero Section */}
       <section className="relative overflow-hidden gradient-hero">
         <div className="absolute inset-0 bg-black/20"></div>
