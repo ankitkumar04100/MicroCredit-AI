@@ -17,10 +17,8 @@
 9. [Lessons Learned](#lessons-learned)
 10. [Future Roadmap](#future-roadmap)
 11. [Demo & Screenshots](#demo--screenshots)
-12. [Setup Instructions](#setup-instructions)
-13. [Contributors](#contributors)
-14. [License](#license)
-15. [Appendix & Architecture](#appendix--architecture)
+12. [License](#license)
+13. [Appendix & Architecture](#appendix--architecture)
 
 ---
 
@@ -195,32 +193,11 @@ Optional scoring formula:
 
 ---
 
-## Setup Instructions
-
-### Backend
-
-- cd backend
-- pip install -r requirements.txt
-- python app.py
-
-### Frontend
-
-- cd frontend
-- npm install
-- npm start
-
-### AI Model
-
-- cd ai_model
-- jupyter notebook credit_scoring_model.ipynb
-
-## Contributors
-
-- Name: Ankit Kumar
-
 ## License
 
 - MIT License
+
+---
 
 ## Appendix & Architecture
 
